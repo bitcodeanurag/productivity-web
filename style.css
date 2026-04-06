@@ -1,0 +1,268 @@
+:root{
+    --pri:#222831;
+    --sec:#393E46;
+    --tri:#00ADB5;
+    --tri2:#EEEEEE;
+}
+@font-face {
+    font-family:light ;
+    src: url(./AeonikTRIAL-Light.otf);
+}
+@font-face {
+    font-family: bold;
+    src: url(./AeonikTRIAL-Bold.otf);
+}
+@font-face {
+    font-family: regular;
+    src: url(./AeonikTRIAL-Regular.otf);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: light;
+    color: wheat;
+}
+
+html,
+body{
+    height: 100%;
+    width: 100%;
+
+}
+#main {
+    height: 100%;
+    width: 100%;
+    background-color: var(--pri);
+}
+nav {
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    background-color: var(--sec);
+}
+section.allElems{
+    height: 100%;
+    width: 100%;
+    padding: 40px;
+    padding-top: 80px;
+    background-color: var(--tri2);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 30px;
+    position: absolute;
+}
+.elem{
+    background-color: var(--pri);
+    /* padding: 30px 40px ; */
+    height: 310px ;
+    width: 264px;
+    font-size: 20px;
+    border-radius: 30px ;
+    position: relative;
+    overflow: hidden;
+    transition: all linear 0.2s;
+    border: solid var(--sec) 2px;
+    cursor: pointer;
+    box-shadow: 0 px 0px 40px var(--sec);
+}
+.elem img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    /* position: absolute; */
+    
+}
+.elem h2{
+    text-shadow:0px 0px 5px white ;
+    position:absolute;
+    left: 5%;
+    top: 5%;
+    color:black;
+
+}
+.elem:active{
+    scale: 0.96;
+}
+.fullelem {
+    height: 100%;
+    width: 100%;
+    background-color: var(--pri);
+    font-size: 40px;
+    padding: 40px 30px;
+    display: none;
+    /* position: absolute; */
+    position: fixed;   /* 🔥 better */
+    top: 0;
+    left: 0;
+    transition: all linear 0.1s;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    
+}
+.fullelem > button {
+    font-size: 30px;
+    padding: 5px 5px;
+    background-color: transparent;
+    border-radius: 10px;
+    font-weight: 800;
+    position: absolute;
+    left: 3%;
+    top: 3%;
+    transition: all ease 0.05s;
+}
+
+.fullelem > button:active{
+    transform: scale(0.85);
+}
+.todo-listpage{
+    display: block;
+}
+.todo-listpage h2{
+    font-size: clamp(3rem,2vmax,6rem);
+    position: absolute;
+    top: 3vmin;
+    left: 10%;
+}
+.todo-listpage .todo-container{
+    /* height: 80%; */
+    /* width: 100%; */
+    height: 80vh;
+
+    /* width: 95vw; */
+    width: 100%;
+    margin-top: 6vmin;
+    background-color: var(--tri2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 20px;
+    /* margin-inline-end:vmin; */
+}
+.todo-listpage .todo-container .addtask{
+    width: 35%;
+    height: 100%;
+    background-color: var(--sec);
+    border-radius: 20px;
+    border: solid 2px var(--sec);
+    position: relative;
+}
+.todo-listpage .todo-container .alltask {
+    width: 62%;
+    height: 100%;
+    padding: 10px 20px;
+    background-color:#c2b8a392;
+    border-radius: 20px;
+    border: solid 2px var(--sec);
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    gap: 1vh;
+}
+.todo-listpage .todo-container .addtask form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 30px;
+    padding-inline: 30px;
+    position: relative;
+
+}
+.addtask h3{
+    font-size: clamp(3rem,2vmax,6rem);
+    padding: 30px 20px;
+    margin-left: 2vw;
+}
+.todo-container .addtask form input{
+    width: 100%;
+    padding-top: 0.5em ;
+    padding-left: 0.3em;
+    padding-bottom: 0.5em;
+    padding-right: 2em;
+    font-size: clamp(1.3rem, 1.2vw, 1.7rem);
+    background-color: var(--pri);
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px var(--tri2);
+    border: 2px solid white;
+}
+.todo-container .addtask form textarea{
+    padding-top: 10px ;
+    padding-left: 5px;
+    padding-bottom: 1em;
+    padding-right: 60px;
+    /* font-size: 20px; */
+    font-size: clamp(1rem, 2vw, 3rem);
+    background-color: var(--pri);
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px var(--tri2);
+    border: 2px solid white;
+    /* min-height: 150px; */
+    /* max-height: 270px; */
+    min-height: 30vh;
+    height: auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0vw;
+}
+textarea::-webkit-scrollbar {
+  display: none;
+}
+
+.todo-container .addtask form button{
+    padding: 0.5em 1em;
+    font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+    background-color: rgba(255, 255, 255, 0.141);
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px black;
+    border: 2px solid white;
+    transition: scale linear 0.2s;
+}
+.todo-container .addtask form button:active{
+    transform: scale(0.96);
+    background-color: #000000;
+}
+.task{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: var(--sec) ;
+    padding: 5px 10px;
+    border-radius: 10px;
+
+}
+.task h5 {
+    font-size: clamp(1rem, 2vw, 3rem);
+}
+@media (max-width: 768px) {
+    .todo-listpage .todo-container {
+        width: 100%;
+        height: auto;
+        margin-top: 9vmin;
+        flex-direction: column;
+        gap: 2vh;
+        align-items: stretch;
+        min-height: 80vh;
+    }
+
+    .todo-listpage .todo-container .addtask{
+        width: 100%;
+        height: auto;
+        /* height: auto; */
+    }
+    .todo-listpage .todo-container .alltask {
+        height: 100%;
+        width: 100%;
+        min-height: 60vh;
+        /* height: auto; */
+    }
+    .todo-listpage h2{
+    font-size: clamp(1rem,5vw,6rem);
+    position: absolute;
+    top: 4%;
+    left: 15%;
+}
+}
