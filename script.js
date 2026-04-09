@@ -27,19 +27,15 @@ let check = document.querySelector('.addtask form .imp #check ')
 let alltask = document.querySelector('.todo-container .alltask')
 
 let currenttask = [
-    {
-        task : 'Mandir jao ',
-        details: 'hanuman ji wale ',
-        imp : true
-    },
-    {
-        task : 'Ghar jao  ',
-        details: 'abhi ke abhi niklo ',
-        imp : true
-    }
+    // {
+    //     task : 'lec bunk ',
+    //     details: 'specifically coa ',
+    //     imp : true
+    // },
+
 ]
 
-
+// rendering function for new tasks 
 function rendertask(){
     let sum = ''
     currenttask.forEach(function(elem){
@@ -54,6 +50,7 @@ rendertask();
 
 form.addEventListener('submit',function(e){
     e.preventDefault()
+    // detects if the input is empty and throws error 
      if(input.value.trim() === '') {
         input.style.border = '2px solid red'
         input.placeholder = 'Please enter a task!'
@@ -69,7 +66,8 @@ form.addEventListener('submit',function(e){
     // console.log(input.value)
     // console.log(details.value);
     // console.log(check.checked);
-    currenttask.push({task:input.value,details:detail.value,imp:check.checked })
+
+    currenttask.push({task:input.value,details:detail.value,imp:check.checked })    //pushing the inputs in currenttask 
     input.value = ''
     detail.value = ''
     check.checked = false
