@@ -175,8 +175,18 @@ section.allElems{
     font-size: clamp(3rem,2vmax,6rem);
     padding: 30px 20px;
     margin-left: 2vw;
+}.todo-listpage .todo-container .addtask .imp{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2vmin;
+    font-size: 2.5vmin;
+
 }
-.todo-container .addtask form input{
+.todo-listpage .todo-container .addtask .imp #check {
+    transform: scale(clamp(1, 2vw, 3));
+}
+.todo-container .addtask form #task {
     width: 100%;
     padding-top: 0.5em ;
     padding-left: 0.3em;
@@ -234,8 +244,41 @@ textarea::-webkit-scrollbar {
     border-radius: 10px;
 
 }
+.task button{
+    padding: 0.5em 1em;
+    font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+    background-color: rgba(255, 255, 255, 0.141);
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px rgb(0, 0, 0);
+    border: 2px solid white;
+    transition: scale linear 0.1s;
+}
+.task button:active{
+    transform: scale(0.96);
+    color:white;
+    background-color: #000000;
+    box-shadow: 0px 0px 30px rgb(255, 255, 255);
+
+}
+.task h5 span i{
+    font-size: clamp(0.6rem, 1.1vw, 3rem);
+    color:white;
+    font-weight: 1;
+}
+.task h5 span.false{
+    display: none;
+}
+.task h5 span.true{
+    display: inline;
+}
+.task h5 span {
+    font-size: clamp(0.6rem, 1.2vw, 3rem);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:white;
+    font-weight: 1;
+}
 .task h5 {
-    font-size: clamp(1rem, 2vw, 3rem);
+font-size: clamp(1rem, 2vw, 3rem);
 }
 @media (max-width: 768px) {
     .todo-listpage .todo-container {
