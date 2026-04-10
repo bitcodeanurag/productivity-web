@@ -117,14 +117,14 @@ section.allElems{
 .fullelem > button:active{
     transform: scale(0.85);
 }
-.todo-listpage{
+/* .todo-listpage{
     display: block;
-}
+ }  */
 .todo-listpage h2{
     font-size: clamp(3rem,2vmax,6rem);
     position: absolute;
-    top: 3vmin;
-    left: 10%;
+    top: 2.4vmin;
+    left: 8%;
 }
 .todo-listpage .todo-container{
     /* height: 80%; */
@@ -245,12 +245,12 @@ textarea::-webkit-scrollbar {
 
 }
 .task button{
-    padding: 0.5em 1em;
-    font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+    padding: 0.3em 0.5em;
+    font-size: clamp(0.6rem, 0.5vw, 1rem);
     background-color: rgba(255, 255, 255, 0.141);
     border-radius: 5px;
     box-shadow: 0px 0px 20px rgb(0, 0, 0);
-    border: 2px solid white;
+    border: 1px solid white;
     transition: scale linear 0.1s;
 }
 .task button:active{
@@ -307,5 +307,45 @@ font-size: clamp(1rem, 2vw, 3rem);
     position: absolute;
     top: 4%;
     left: 15%;
+}
+}
+@media (max-width: 376px){
+     .todo-listpage .todo-container {
+        width: 100%;
+        height: auto;
+        margin-top: 9vmin;
+        flex-direction: column;
+        gap: 2vh;
+        align-items: stretch;
+        min-height: 80vh;
+    }
+
+    .todo-listpage .todo-container .addtask{
+        width: 100%;
+        height: auto;
+        /* height: auto; */
+    }
+    .todo-listpage .todo-container .alltask {
+        height: 100%;
+        width: 100%;
+        min-height: 60vh;
+        /* height: auto; */
+    }
+    .todo-listpage h2{
+    font-size: clamp(1.3rem,5vw,3rem);
+    position: absolute;
+    top: 4%;
+    left: 19%;
+}
+.fullelem > button {
+    font-size: 25px;
+    padding: 5px 5px;
+    background-color: transparent;
+    border-radius: 10px;
+    font-weight: 800;
+    position: absolute;
+    left: 3%;
+    top: 3%;
+    transition: all ease 0.05s;
 }
 }
