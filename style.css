@@ -171,6 +171,9 @@ section.allElems{
     position: relative;
 
 }
+#details{
+    resize: none;
+}
 .addtask h3{
     font-size: clamp(3rem,2vmax,6rem);
     padding: 30px 20px;
