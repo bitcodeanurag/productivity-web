@@ -181,10 +181,15 @@ section.allElems{
     justify-content: flex-start;
     gap: 2vmin;
     font-size: 2.5vmin;
-
+    padding: 0.2rem;
+    cursor: pointer;
+}
+.imp .imp-checkbox{
+    cursor: pointer;
 }
 .todo-listpage .todo-container .addtask .imp #check {
     transform: scale(clamp(1, 2vw, 3));
+    cursor: pointer;
 }
 .todo-container .addtask form #task {
     width: 100%;
