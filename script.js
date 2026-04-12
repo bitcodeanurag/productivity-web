@@ -1,5 +1,5 @@
-window.addEventListener('pageshow', function(e) {
-    if(e.persisted) {
+window.addEventListener('pageshow', function (e) {
+    if (e.persisted) {
         window.location.reload()
     }
 })
@@ -115,4 +115,101 @@ function todolist() {
 
 // openfeture()
 
-todolist(); 
+todolist();
+
+
+let calendarEl = document.querySelector('.calendar')
+let modal = document.getElementById('calendarModal')
+let modalInput = document.getElementById('modalInput')
+let modalConfirm = document.getElementById('modalConfirm')
+let modalCancel = document.getElementById('modalCancel')
+let pendingInfo = null
+let deleteModal = document.getElementById('deleteModal')
+let deleteCancel = document.getElementById('deleteCancel')
+let deleteConfirm = document.getElementById('deleteConfirm')
+let deleteTaskName = document.getElementById('deleteTaskName')
+let pendingDelete = null
+
+let calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: window.innerWidth < 768 ? 'timeGridDay' : 'timeGridDay',
+    allDaySlot: false,
+    slotMinTime: '06:00:00',
+    slotMaxTime: '23:00:00',
+    slotDuration: '00:30:00',
+    selectable: true,
+    editable: true,
+    //for  phone touch
+    longPressDelay: 0,          
+    selectLongPressDelay: 0,    
+    eventLongPressDelay: 0, 
+    // task over lap issue 
+    slotEventOverlap: false,
+    eventMaxStack: 2,
+    expandRows: true,
+
+
+
+    select: function (info) {
+        pendingInfo = info
+        modal.style.display = 'flex'
+        modalInput.focus()
+    },
+
+    events: JSON.parse(localStorage.getItem('calendarEvents') || '[]'),
+
+    eventAdd: function (info) {
+        let events = JSON.parse(localStorage.getItem('calendarEvents') || '[]')
+        events.push(info.event.toPlainObject())
+        localStorage.setItem('calendarEvents', JSON.stringify(events))
+    },
+
+    eventClick: function (info) {
+        pendingDelete = info.event
+        deleteTaskName.textContent = `"${info.event.title}"`
+        deleteModal.style.display = 'flex'
+    },
+})
+
+calendar.render()
+
+
+modalConfirm.addEventListener('click', function () {
+    if (modalInput.value.trim() !== '' && pendingInfo) {
+        calendar.addEvent({
+            title: modalInput.value,
+            start: pendingInfo.start,
+            end: pendingInfo.end,
+            color: '#00ADB5'
+        })
+    }
+    modalInput.value = ''
+    modal.style.display = 'none'
+    pendingInfo = null
+})
+
+modalCancel.addEventListener('click', function () {
+    modalInput.value = ''
+    modal.style.display = 'none'
+    pendingInfo = null
+})
+
+modalInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') modalConfirm.click()
+})
+
+deleteConfirm.addEventListener('click', function () {
+    if (pendingDelete) {
+        pendingDelete.remove()
+        let events = JSON.parse(localStorage.getItem('calendarEvents') || '[]')
+        events = events.filter(e => e.title !== pendingDelete.title)
+        localStorage.setItem('calendarEvents', JSON.stringify(events))
+        pendingDelete = null
+    }
+    deleteModal.style.display = 'none'
+})
+
+deleteCancel.addEventListener('click', function () {
+    pendingDelete = null
+    deleteModal.style.display = 'none'
+})
+
