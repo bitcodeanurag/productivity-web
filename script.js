@@ -13,7 +13,7 @@ allElems.forEach(function (elem) {
         let fullelem = (document.querySelectorAll('.fullelem')[elem.id])
         fullelem.style.display = 'block';
         fullelem.style.transform = 'scale(1)';
-        localStorage.setItem('openpage', elem.id)   //saves the opened page id 
+        sessionStorage.setItem('openpage', elem.id)   //saves the opened page id 
     })
 })
 // let fullelempagebackbtn = document.querySelectorAll('.fullelem .back')
@@ -22,12 +22,12 @@ fullelempagebackbtn.forEach(function (back) {
         //    fullelempage[back.id].style.display = 'none';
         fullelempage[back.id].style.transform = 'scale(0)';
         // fullelempage[back.id].style.display = 'none';
-        localStorage.removeItem('openpage')      //  removes the openpage entirly
+        sessionStorage.removeItem('openpage')       //  removes the openpage entirly
 
     })
 })
 //On reload — check if a page was open and reopen it
-let openpage = localStorage.getItem('openpage')
+let openpage = sessionStorage.getItem('openpage')
 if (openpage !== null) {
     let fullelem = document.querySelectorAll('.fullelem')[openpage]
     fullelem.style.display = 'block';
@@ -139,9 +139,9 @@ let calendar = new FullCalendar.Calendar(calendarEl, {
     selectable: true,
     editable: true,
     //for  phone touch
-    longPressDelay: 0,          
-    selectLongPressDelay: 0,    
-    eventLongPressDelay: 0, 
+    longPressDelay: 150,          
+    selectLongPressDelay: 150,    
+    eventLongPressDelay: 150, 
     // task over lap issue 
     slotEventOverlap: false,
     eventMaxStack: 2,
