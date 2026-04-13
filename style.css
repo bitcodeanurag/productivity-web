@@ -129,6 +129,7 @@ section.allElems {
     left: 3%;
     top: 3%;
     transition: all ease 0.05s;
+    z-index: 99;
 }
 
 .fullelem>button:active {
@@ -657,7 +658,8 @@ textarea::-webkit-scrollbar {
 }
 
 .motivation-page .wrapper {
-    height: 60vh;
+    padding: 1vmin 10vmin;
+    height: auto;
     width: 50vmax;
     color: whitesmoke;
     position: absolute;
@@ -702,7 +704,7 @@ textarea::-webkit-scrollbar {
     width: 30vmax; */
     padding-inline:1vmin;
     padding-bottom: 1vmin;
-    height: 100%;
+    min-height: 70vh;
     width: 100%;
     padding-top: 1vmin;
     display: flex;
@@ -726,7 +728,6 @@ textarea::-webkit-scrollbar {
     box-shadow: 0 0 20vmin gold;
     border-width:0.9vmin ;
     /* text-shadow: 0 0 5px rgb(255, 255, 255); */
-    position: relative;
     
 }
 /* .box:hover{
@@ -742,8 +743,7 @@ textarea::-webkit-scrollbar {
     object-fit: scale-down;
     opacity: 0;
     transition: opacity 0.3s ease;
-    
-    /* object-position: 0% 70%; */
+    /*object-position: 0% 70%; */
     
 }
 .box #quote{
@@ -751,11 +751,15 @@ textarea::-webkit-scrollbar {
     height: 5%;
     object-fit: cover;
     margin-left: 80%;
+   
     
 }
 .box h2{
     font-size: clamp(0.7rem, 1.3vw, 2rem);
     margin-inline: 10%;
+    
+
+    
 }
 .box h1{
     font-size: clamp(0.5rem, 1vw, 1.5rem);
