@@ -13,6 +13,7 @@ allElems.forEach(function (elem) {
         let fullelem = (document.querySelectorAll('.fullelem')[elem.id])
         fullelem.style.display = 'block';
         fullelem.style.transform = 'scale(1)';
+        document.body.style.overflow = 'hidden'
         sessionStorage.setItem('openpage', elem.id)   //saves the opened page id 
     })
 })
@@ -21,6 +22,7 @@ fullelempagebackbtn.forEach(function (back) {
     back.addEventListener('click', function () {
         //    fullelempage[back.id].style.display = 'none';
         fullelempage[back.id].style.transform = 'scale(0)';
+        document.body.style.overflow = ''
         // fullelempage[back.id].style.display = 'none';
         sessionStorage.removeItem('openpage')       //  removes the openpage entirly
 
@@ -139,9 +141,9 @@ let calendar = new FullCalendar.Calendar(calendarEl, {
     selectable: true,
     editable: true,
     //for  phone touch
-    longPressDelay: 150,          
-    selectLongPressDelay: 150,    
-    eventLongPressDelay: 150, 
+    longPressDelay: 150,
+    selectLongPressDelay: 150,
+    eventLongPressDelay: 150,
     // task over lap issue 
     slotEventOverlap: false,
     eventMaxStack: 2,
@@ -213,3 +215,26 @@ deleteCancel.addEventListener('click', function () {
     deleteModal.style.display = 'none'
 })
 
+let motivationquote = document.querySelector('.motivation-page .box h2')
+let motivationauthor = document.querySelector('.motivation-page .box h1')
+let motivationimage = document.querySelector('.motivation-page .box #person')
+let author;
+async function fetchquotes() {
+    let response = await fetch('https://quoteslate.vercel.app/api/quotes/random')
+    let data = await response.json()
+
+    motivationquote.innerHTML = data.quote
+    motivationauthor.innerHTML = '-' + data.author
+    author = data.author;
+    let wikiResponse = await fetch('https://en.wikipedia.org/api/rest_v1/page/summary/' + encodeURIComponent(data.author))
+    let wikiData = await wikiResponse.json()
+    if (wikiData.thumbnail) {
+        motivationimage.referrerPolicy = 'no-referrer'  // hides where request is coming from
+        motivationimage.src = wikiData.thumbnail.source
+        motivationimage.onload = function () {
+            motivationimage.style.opacity = 1
+        }
+
+    }
+}
+fetchquotes();
