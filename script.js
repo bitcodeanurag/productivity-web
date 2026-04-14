@@ -15,6 +15,11 @@ allElems.forEach(function (elem) {
         fullelem.style.transform = 'scale(1)';
         document.body.style.overflow = 'hidden'
         sessionStorage.setItem('openpage', elem.id)   //saves the opened page id 
+        if (elem.id == '1') {
+            setTimeout(function () {
+                calendar.updateSize()
+            }, 100)  
+        }
     })
 })
 // let fullelempagebackbtn = document.querySelectorAll('.fullelem .back')
@@ -238,3 +243,65 @@ async function fetchquotes() {
     }
 }
 fetchquotes();
+
+let workstatus = document.querySelector('.pomodoro-page .pomodoro .status')
+let timer = document.querySelector('.pomodoro-page .pomodoro .timer')
+let start = document.querySelector('.pomodoro-page .pomodoro .start')
+let stop = document.querySelector('.pomodoro-page .pomodoro .stop')
+let reset = document.querySelector('.pomodoro-page .pomodoro .reset')
+isworksession = true;
+let interval;
+
+let time = 25*60;
+function updatetime(){
+    let minute = Math.floor(time /60);
+    let sec = time%60;
+    timer.innerHTML =`${String(minute).padStart(2,'0')}:${String(sec).padStart(2,'0')} `;
+}
+
+function session(){
+    clearInterval(interval)
+    if(isworksession){
+        interval = setInterval(() => {
+            if(time>0){
+                time--;
+                updatetime();
+            }
+            else{
+                isworksession =false
+                clearInterval(interval)
+                timer.innerHTML = '05:00'
+                workstatus.innerHTML = 'Take a break'
+                workstatus.style.backgroundColor = 'rgb(119, 141, 85)'
+                time = 5*60;
+            }
+        }, 1000);
+        
+    }else{
+        interval = setInterval(() => {
+            if(time>0){
+                time--;
+                updatetime();
+            }
+            else{
+                isworksession =true
+                clearInterval(interval)
+                timer.innerHTML = '25:00'
+                workstatus.innerHTML = 'Work Session'
+                // workstatus.style.backgroundColor = 'rgb(119, 141, 85)'
+                time =25*60;
+            }
+        }, 1000);        
+    }
+}
+function pause(){
+    clearInterval(interval)
+}
+function resettimer(){
+    time = 25*60;
+    clearInterval(interval)
+    updatetime();
+}
+start.addEventListener('click',session)
+stop.addEventListener('click',pause)
+reset.addEventListener('click',resettimer)

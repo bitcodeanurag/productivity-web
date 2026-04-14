@@ -766,3 +766,84 @@ textarea::-webkit-scrollbar {
     margin-left: 50%;
     font-family: italicb;
 }
+.pomodoro-page{
+    position: fixed;
+}
+.pomodoro-page >button{
+    text-shadow: 0.3vmin 0.3vmin 0 black;
+    box-shadow: 0.5vmin 0.5vmin 1vmin black;
+}
+.pomodoro-page >h2{
+    z-index: 1;
+    font-size:clamp(2.5rem, 3vw, 7rem); 
+    position: absolute;
+    text-shadow: 0.3vmin 0.3vmin 0 black;
+    top:2.7%;
+    left:9%;
+}
+.pomodoro-page .pomodoro{
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    /* background-image: ; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3vh;
+}
+.pomodoro img {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -10;
+    object-fit: cover;
+    filter: blur(1.5vh);
+}
+.pomodoro-page .pomodoro h2{
+    color:beige ;
+    font-size: clamp(2rem, 3vw, 5rem) ;
+    margin-bottom: 5vh;
+    background-color:rgb(147, 55, 55);
+    border-radius:2vmin;
+    padding: 1vh 1vh;
+    text-shadow: 0.5vmin 0.5vmin 0.5vmin black;
+    box-shadow: 0.5vmin 0.5vmin 1vmin black;
+}
+.pomodoro-page .pomodoro h1{
+    text-shadow: 0.5vmin 0.5vmin 0 black;
+}
+.pomodoro-page .buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5vmin;
+
+}
+.pomodoro-page .buttons button{
+    padding: 1.5vmin 3vmin;
+    color: black;
+    font-size: 1rem;
+    font-weight: 1000;
+    background-color: beige;
+    box-shadow: 0.5vmin 0.5vmin 0 black;
+    border-radius: 1rem;
+    transition: all 0.1;
+}
+.pomodoro-page .buttons button:active{
+    box-shadow: none;
+    transform: scale(0.9);
+}
+@media(max-width : 768px){
+    .pomodoro-page >h2{
+    z-index: 1;
+    font-size:clamp(2rem, 2.5vw, 5rem); 
+    position: absolute;
+    text-shadow: 0.3vmin 0.3vmin 0 black;
+    top:3.2%;
+    left:17%;
+    }
+}
