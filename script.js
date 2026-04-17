@@ -18,7 +18,7 @@ allElems.forEach(function (elem) {
         if (elem.id == '1') {
             setTimeout(function () {
                 calendar.updateSize()
-            }, 100)  
+            }, 100)
         }
     })
 })
@@ -252,56 +252,130 @@ let reset = document.querySelector('.pomodoro-page .pomodoro .reset')
 isworksession = true;
 let interval;
 
-let time = 25*60;
-function updatetime(){
-    let minute = Math.floor(time /60);
-    let sec = time%60;
-    timer.innerHTML =`${String(minute).padStart(2,'0')}:${String(sec).padStart(2,'0')} `;
+let time = 25 * 60;
+function updatetime() {
+    let minute = Math.floor(time / 60);
+    let sec = time % 60;
+    timer.innerHTML = `${String(minute).padStart(2, '0')}:${String(sec).padStart(2, '0')} `;
 }
 
-function session(){
+function session() {
     clearInterval(interval)
-    if(isworksession){
+    if (isworksession) {
         interval = setInterval(() => {
-            if(time>0){
+            if (time > 0) {
                 time--;
                 updatetime();
             }
-            else{
-                isworksession =false
+            else {
+                isworksession = false
                 clearInterval(interval)
                 timer.innerHTML = '05:00'
                 workstatus.innerHTML = 'Take a break'
                 workstatus.style.backgroundColor = 'rgb(119, 141, 85)'
-                time = 5*60;
+                time = 5 * 60;
             }
         }, 1000);
-        
-    }else{
+
+    } else {
         interval = setInterval(() => {
-            if(time>0){
+            if (time > 0) {
                 time--;
                 updatetime();
             }
-            else{
-                isworksession =true
+            else {
+                isworksession = true
                 clearInterval(interval)
                 timer.innerHTML = '25:00'
                 workstatus.innerHTML = 'Work Session'
                 // workstatus.style.backgroundColor = 'rgb(119, 141, 85)'
-                time =25*60;
+                time = 25 * 60;
             }
-        }, 1000);        
+        }, 1000);
     }
 }
-function pause(){
+function pause() {
     clearInterval(interval)
 }
-function resettimer(){
-    time = 25*60;
+function resettimer() {
+    time = 25 * 60;
     clearInterval(interval)
     updatetime();
 }
-start.addEventListener('click',session)
-stop.addEventListener('click',pause)
-reset.addEventListener('click',resettimer)
+start.addEventListener('click', session)
+stop.addEventListener('click', pause)
+reset.addEventListener('click', resettimer)
+
+//automatic city detection
+let city = null;
+navigator.geolocation.getCurrentPosition(async (position) => {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+
+    const response = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`
+    );
+
+    const data = await response.json();
+
+    city = data.address.city || data.address.town || data.address.village;
+
+    weather();
+    daytime();
+    
+
+},
+ (error) => {
+        console.warn('Geolocation denied:', error.message);
+         alert('📍 Location access is blocked!\n\nTo enable it:\n1. Click the 🔒 icon next to the URL\n2. Set Location to "Allow"\n3. Reload the page\n\nUsing Mumbai as default for now.')
+        city = 'Mumbai';
+        weather();
+        daytime();
+    }
+);
+async function weather() {
+    let response = await fetch(`https://api.weatherapi.com/v1/current.json?key=fb2656aff13d4786a31215245261604&q=${city}&aqi=no`)
+    let data = await response.json()
+    console.log(data);
+    document.querySelector('.temp h1').innerHTML = `${data.current.temp_c} <sup>&deg;c</sup>`
+    document.querySelector('.temp #p ').innerHTML = `Precipitation: ${data.current.precip_in}% `
+    document.querySelector('.temp #h ').innerHTML = `Humidity: ${data.current.humidity}% `
+    document.querySelector('.temp #w ').innerHTML = `Wind: ${data.current.wind_kph} km/h`
+    document.querySelector('.daytime #cond').innerHTML = data.current.condition.text
+}
+
+
+let date = null;
+function daytime() {
+    date = new Date()
+    const days = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+    ];
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    let tarik = date.getDate()
+    let month = months[date.getMonth()]
+    let year = date.getFullYear()
+    let dayofweek = days[date.getDay()]
+    let hours = date.getHours()
+    let minutes = date.getMinutes()
+
+    let sheher = document.querySelector('.daytime h1')
+    let headerdaytime = document.querySelector('.daytime h2')
+    let headerdate = document.querySelector('.daytime #date')
+    sheher.innerHTML = `${city}`
+    headerdate.innerHTML = `${tarik} ${month}, ${year}`
+    if (hours >= 12) {
+        headerdaytime.innerHTML = `${dayofweek}, ${String(hours - 12).padStart(2, '0')}:${String(minutes).padStart(2, '0')} PM`
+    } else {
+        headerdaytime.innerHTML = `${dayofweek}, ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')} AM`
+    }
+}
+setInterval(() => {
+        daytime();
+    }, 1000 * 60);

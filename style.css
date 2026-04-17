@@ -1,6 +1,6 @@
 :root {
     --pri: #222831;
-    --sec: #393E46;
+    --sec: #707781;
     --tri: #00ADB5;
     --tri2: #EEEEEE;
 }
@@ -29,7 +29,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: light;
-    color: wheat;
+    /* color: wheat; */
 }
 
 html,
@@ -45,52 +45,124 @@ body {
     background-color: var(--pri);
 }
 
-nav {
-    position: fixed;
-    width: 100%;
-    height: 60px;
-    background-color: var(--sec);
-}
 
-section.allElems {
+section .allElems {
     height: 100%;
     width: 100%;
-    padding: 40px;
-    padding-top: 80px;
-    background-color: var(--tri2);
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     position: absolute;
 }
+.allElems .weather{
+    color: black;
+    height: 30vh;
+    width: 100%;
+    background-image: url(https://images.pexels.com/photos/296234/pexels-photo-296234.jpeg?_gl=1*13mqeqj*_ga*MTUxOTA0ODAxMS4xNzc2MTgzOTEw*_ga_8JE65Q40S6*czE3NzYzNzA0MzQkbzQkZzEkdDE3NzYzNzI4ODEkajQ4JGwwJGgw);
+    background-size: cover;
+    background-position: 0% 70%;
+    padding:5% 15%;
+    border: 0.1vmin solid white;
+    border-bottom-left-radius: 2vmin;
+    border-bottom-right-radius:2vmin;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.allElems .weather .temp{
+    display: flex;
+    flex-direction: column;
+    gap:1vmin;
+    padding-left: 3vw;
+    padding-bottom: 5vh;
+    transition: all linear 0.15s;
+}
+.temp:hover{
+    transform: scale(1.15);
+}
+
+.allElems .weather .daytime{
+    display: flex;
+    flex-direction: column;
+    gap:1vmin;
+    padding-left: 3vw;
+    padding-bottom: 1vh;
+    transition: all linear 0.15s;
+}
+.daytime:hover{
+    transform: scale(1.15);
+}
+
+.allElems .weather h1{
+font-size: clamp(4rem, 3vmin ,8rem);
+}
+.allElems .weather h2 {
+font-size: clamp(2rem, 4vmin ,6rem);
+}
+.allElems .weather h3{
+font-size: clamp(0.8rem, 2.5vmin ,6rem);
+}
+.allElems .features {
+    height: 70vh;
+    width: 100%;
+    padding: 5vw;
+    padding-top: 1vh;
+    position: relative; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2vw;
+    overflow: hidden;
+}
+
+.allElems .features::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('images/pexels-akbar-nemati-220109-34597502.jpg');
+    background-size: cover;
+    background-position: 0% 65%;
+    filter: blur(5px);
+    z-index: 0;
+}
+
+.allElems .features > * {
+    position: relative;
+    z-index: 1;
+}
+
 
 .elem {
-    background-color: var(--pri);
-    /* padding: 30px 40px ; */
-    height: 310px;
-    width: 264px;
-    font-size: 20px;
+    
+    height:40vh;
+    width: 100%;
+    font-size: clamp(1rem , 2.5vmin ,4rem);
     border-radius: 30px;
     position: relative;
     overflow: hidden;
     transition: all linear 0.2s;
     border: solid var(--sec) 2px;
     cursor: pointer;
-    box-shadow: 0 px 0px 40px var(--sec);
+    box-shadow: 0vw 2vw 5vmin white;
+    transition: all linear 0.15s;
 }
 
+.elem:hover{
+    transform: scale(1.1);
+    font-size: clamp(1.1rem , 2.6vmin ,4.4rem);
+}
 .elem img {
     height: 100%;
     width: 100%;
     object-fit: cover;
     pointer-events: none;
-    /* position: absolute; */
-
 }
 
 .elem h2 {
-    text-shadow: 0px 0px 5px white;
+    text-shadow: 0.1vmin 0.1vmin 0.2vmin rgb(252, 248, 252);
     position: absolute;
     left: 5%;
     top: 5%;
@@ -99,7 +171,7 @@ section.allElems {
 }
 
 .elem:active {
-    scale: 0.96;
+    scale: 0.9;
 }
 
 .fullelem {
@@ -141,6 +213,7 @@ section.allElems {
  }  */
 .todo-listpage h2 {
     font-size: clamp(3rem, 2vmax, 6rem);
+    text-shadow: 0.1vmin 0.1vmin 0.5vmin white;
     position: absolute;
     top: 2.4vmin;
     left: 8%;
@@ -418,12 +491,14 @@ textarea::-webkit-scrollbar {
     height: 100%;         
     
 }
+
 .daily-plannerpage[style*="display: block"] {
     display: flex !important;
 }
 
 .daily-plannerpage h3 {
     position: absolute;
+    text-shadow: 0.1vmin 0.1vmin 0.5vmin white;
     top: 2.5%;
     left: 10%;
 
@@ -770,14 +845,14 @@ textarea::-webkit-scrollbar {
     position: fixed;
 }
 .pomodoro-page >button{
-    text-shadow: 0.3vmin 0.3vmin 0 black;
-    box-shadow: 0.5vmin 0.5vmin 1vmin black;
+    text-shadow: 0.3vmin 0.3vmin 0 rgb(255, 255, 255);
+    box-shadow: 0.3vmin 0.3vmin 1vmin rgb(242, 242, 242);
 }
 .pomodoro-page >h2{
     z-index: 1;
     font-size:clamp(2.5rem, 3vw, 7rem); 
     position: absolute;
-    text-shadow: 0.3vmin 0.3vmin 0 black;
+    text-shadow: 0.2vmin 0.2vmin 0 rgb(255, 255, 255);
     top:2.7%;
     left:9%;
 }
@@ -810,11 +885,11 @@ textarea::-webkit-scrollbar {
     background-color:rgb(147, 55, 55);
     border-radius:2vmin;
     padding: 1vh 1vh;
-    text-shadow: 0.5vmin 0.5vmin 0.5vmin black;
+    text-shadow: 0.5vmin 0.5vmin 0.5vmin rgb(0, 0, 0);
     box-shadow: 0.5vmin 0.5vmin 1vmin black;
 }
 .pomodoro-page .pomodoro h1{
-    text-shadow: 0.5vmin 0.5vmin 0 black;
+    text-shadow: 0.3vmin 0.3vmin 0 rgb(255, 255, 255);
 }
 .pomodoro-page .buttons{
     display: flex;
@@ -846,4 +921,69 @@ textarea::-webkit-scrollbar {
     top:3.2%;
     left:17%;
     }
+}
+
+@media(max-width:500px){
+
+
+    .allElems .weather h1{
+font-size: clamp(1.5rem, 1vmin ,4rem);
+}
+.allElems .weather h2 {
+font-size: clamp(1rem, 1vmin ,3rem);
+}
+.allElems .weather h3{
+font-size: clamp(0.5rem, 2.5vmin ,3rem);
+}
+
+allElems .weather .temp{
+    display: flex;
+    flex-direction: column;
+    gap:1vmin;
+    padding-left: 3vw;
+    padding-bottom: 5vh;
+    transition: all linear 0.15s;
+}
+.allElems .weather .daytime{
+    display: flex;
+    flex-direction: column;
+    gap:1vmin;
+    padding-left: 3vw;
+    padding-bottom: 1vh;
+    transition: all linear 0.15s;
+}
+.weather{
+     padding:5% 2%;
+}
+.allElems .features {
+    height:25%;
+    width: 100%;
+    padding: 20%;
+    padding-top: 1vh;
+    position: relative; 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    overflow: hidden;
+    /* display: flex;
+    /* align-items: center;
+    justify-content: center; */
+    /* flex-wrap: wrap;
+    gap: 2vw; */ 
+}
+.elem {
+    
+    height: 29vh;
+    width: 43vw;
+    font-size: clamp(0.8rem , 4vmin ,4rem);
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all linear 0.2s;
+    border: solid var(--sec) 2px;
+    cursor: pointer;
+    box-shadow: 0vw 2vw 5vmin white;
+    transition: all linear 0.15s;
+}
+
 }

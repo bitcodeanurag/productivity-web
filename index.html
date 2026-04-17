@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>your-productivity-web</title>
-    <link rel="shortcut icon" href="android-chrome-512x512.png" type="image/x-icon">
+    <link rel="shortcut icon" href="images/android-chrome-512x512.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
@@ -14,38 +14,50 @@
 
 <body>
     <div id="main">
-        <nav>
 
-        </nav>
         <section class="allElems">
-            <div class="todo elem" id="0">
-                <h2>TO DO LIST</h2>
-                <img src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bmF0dXJlfGVufDB8fDB8fHww"
-                    alt="">
+            <div class="weather">
+                <div class="temp">
+                    <h1>25 <sup>&deg;c</sup></h1>
+                    <h3 id="p">Precipitation: 5% </h3>
+                    <h3 id="h">Humidity: 79% </h3>
+                    <h3 id="w">Wind: 3 km/h </h3>
+                </div>
+                <div class="daytime">
+                    <h1>Mumbai</h1>
+                    <h3 id="date">12 may, 2004</h3>
+                    <h2>Friday, 1:00 am</h2>
+                    <h3 id="cond">Mostly cloudy</h3>
+                </div>
             </div>
+            <div class="features">
+                <div class="todo elem" id="0">
+                    <h2>To-Do List</h2>
+                    <img src="https://images.unsplash.com/photo-1692158962119-8103c7d78c86?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dw"
+                        alt="">
+                </div>
 
-            <div class="dail elem" id="1">
-                <h2>DAILY PLANNER</h2>
-                <img src="https://plus.unsplash.com/premium_photo-1711434824963-ca894373272e?q=80&w=715&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="">
-            </div>
-            <div class="moti elem" id="2">
-                <h2>Motivation</h2>
-                <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D"
-                    alt="">
-            </div>
-            <div class="pomo elem" id="3">
-                <h2>POMODORO TIMER</h2>
-                <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D"
-                    alt="">
-            </div>
-            <!-- <div class="goals elem" id="4">
+                <div class="dail elem" id="1">
+                    <h2>Daily Planner</h2>
+                    <img src="https://images.pexels.com/photos/7428863/pexels-photo-7428863.jpeg?_gl=1*1yy8tp4*_ga*MTUxOTA0ODAxMS4xNzc2MTgzOTEw*_ga_8JE65Q40S6*czE3NzYzNzA0MzQkbzQkZzEkdDE3NzYzNzA3MjIkajU5JGwwJGgw"
+                        alt="">
+                </div>
+                <div class="moti elem" id="2">
+                    <h2>Motivation</h2>
+                    <img src="https://images.pexels.com/photos/584179/pexels-photo-584179.jpeg?_gl=1*1kzgpev*_ga*MTUxOTA0ODAxMS4xNzc2MTgzOTEw*_ga_8JE65Q40S6*czE3NzYzNzA0MzQkbzQkZzEkdDE3NzYzNzA5MDAkajQzJGwwJGgw"
+                        alt="">
+                </div>
+                <div class="pomo elem" id="3">
+                    <h2>Pomodoro Timer</h2>
+                    <img src="https://images.unsplash.com/photo-1541480601022-2308c0f02487?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="">
+                </div>
+                <!-- <div class="goals elem" id="4">
                 <h2>DAILY GOALS</h2>
                 <img src="https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D"
                     alt="">
             </div> -->
-
-
+            </div>
         </section>
         <section class="fullelem todo-listpage">
             <button class="back" id="0"><i class="ri-arrow-go-back-fill"></i></button>
@@ -98,7 +110,7 @@
             <div class="wrapper">
                 <div class="box">
                     <img id="person" src="" alt="">
-                    <img id="quote" src="icons8-quote-64.png" alt="">    
+                    <img id="quote" src="images/icons8-quote-64.png" alt="">
                     <h2></h2>
                     <h1></h1>
                 </div>
@@ -108,15 +120,16 @@
             <button class="back" id="3"><i class="ri-arrow-go-back-fill"></i></button>
             <h2>Stay Productive</h2>
             <div class="pomodoro">
-                <img src="https://images.pexels.com/photos/9862247/pexels-photo-9862247.jpeg?_gl=1*1sguqm8*_ga*MTUxOTA0ODAxMS4xNzc2MTgzOTEw*_ga_8JE65Q40S6*czE3NzYxODM5MTAkbzEkZzEkdDE3NzYxODM5MjkkajQxJGwwJGgw" alt="">
+                <img src="https://images.pexels.com/photos/9862247/pexels-photo-9862247.jpeg?_gl=1*1sguqm8*_ga*MTUxOTA0ODAxMS4xNzc2MTgzOTEw*_ga_8JE65Q40S6*czE3NzYxODM5MTAkbzEkZzEkdDE3NzYxODM5MjkkajQxJGwwJGgw"
+                    alt="">
                 <h2 class="status">Work Session</h2>
                 <h1 class="timer">25:00</h1>
                 <div class="buttons">
                     <button class="start">Start</button>
                     <button class="stop">Stop</button>
-                    <button class="reset">Reset</button> 
-                <div>
-            </div>
+                    <button class="reset">Reset</button>
+                    <div>
+                    </div>
         </section>
         <!-- <section class="fullelem daily-goalspage">
             <button class="back" id="4"><i class="ri-arrow-go-back-fill"></i></button>
